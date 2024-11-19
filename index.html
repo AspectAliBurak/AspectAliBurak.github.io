@@ -4,121 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melekle Ali'nin Sitesi</title>
-    <style>
-        /* Genel Sayfa Stili */
+     <style>
+        /* Genel Stil */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4a460;
+            font-family: 'Cursive', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #f6c9c9); /* Pembe tonlarda degrade */
+            color: #fff;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Menü (Geçiş) Stili */
+        /* Menü */
         nav {
-            background-color: #4CAF50;
-            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
             text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 100;
+            border-bottom: 2px solid #ff6f61;
         }
 
         nav a {
-            color: white;
+            color: #ff6f61;
             text-decoration: none;
-            padding: 14px 20px;
-            margin: 0 10px;
-            font-size: 18px;
+            padding: 12px 20px;
+            margin: 0 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         nav a:hover {
-            background-color: #45a049;
-            border-radius: 5px;
+            background-color: #ff6f61;
+            color: white;
         }
 
-        /* Sayfa içerikleri */
-        #photos, #daily {
-            padding: 60px 20px; /* Menü altı boşluk */
+        /* Fotoğraflar Bölümü (Anılarımız) */
+        #photos {
+            text-align: center;
+            margin-top: 90px; /* Menü ile çakışmaması için */
         }
 
-        /* Fotoğraflar Bölümü */
+        #photos h1 {
+            font-size: 32px;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
         #photos img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #photos img:hover {
+            transform: scale(1.05);
         }
 
         #photos p {
-            font-size: 16px;
+            font-size: 18px;
             color: #333;
-            text-align: center;
+            font-style: italic;
         }
 
-        /* Notlar Bölümü */
+        /* Günlük Bölümü */
         #daily {
+            width: 80%;
+            max-width: 700px;
+            margin: 50px auto;
             background-color: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            max-width: 800px;
-            margin: 20px auto;
+            border: 1px solid #e0e0e0;
         }
 
         #daily h2 {
             text-align: center;
             font-size: 28px;
+            color: #ff6f61;
             margin-bottom: 20px;
         }
 
+        /* Not Girişi */
         #noteInput {
             width: 100%;
             padding: 15px;
             font-size: 16px;
-            border: 1px solid #ccc;
+            border: 1px solid #ff6f61;
             border-radius: 8px;
             margin-bottom: 20px;
             background-color: #f9f9f9;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
+        #noteInput:focus {
+            border-color: #ff6f61;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        /* Buton */
         button {
             width: 100%;
             padding: 15px;
-            background-color: #4CAF50;
+            background-color: #ff6f61;
             color: white;
             font-size: 18px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #e35d5b;
         }
 
+        /* Notlar İçin Stil */
         #dailyNoteDisplay {
             margin-top: 20px;
         }
 
+        /* Her bir not için kutu */
         #dailyNoteDisplay .note-item {
             background-color: #f9f9f9;
             padding: 15px;
             margin: 10px 0;
             border-radius: 8px;
-            border-left: 5px solid #4CAF50;
+            border-left: 5px solid #ff6f61;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             font-size: 16px;
             line-height: 1.5;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: transform 0.3s ease;
         }
 
+        #dailyNoteDisplay .note-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Silme Butonu */
         .delete-btn {
             background-color: #f44336;
             color: white;
@@ -127,10 +165,69 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .delete-btn:hover {
             background-color: #d32f2f;
+            transform: scale(1.05);
+        }
+
+        /* Gösterge simgesi */
+        #dailyNoteDisplay .note-item p {
+            margin: 0;
+            padding-right: 20px; /* Butona yer bırakmak için sağda boşluk */
+        }
+
+        #dailyNoteDisplay .note-item p:before {
+            content: "❤️";
+            font-size: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+            color: #ff6f61;
+        }
+
+        /* Aşk Kalpleri Arkaplanı */
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Animasyonlu Kalp */
+        .heart-background .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff6f61;
+            opacity: 0.8; /* Şeffaflık ekleyerek daha yumuşak geçiş */
+            will-change: transform, opacity;
+        }
+
+        /* Kalp Animasyonu - Yüzen kalpler */
+        @keyframes floatingHearts {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate3d(0, -1000px, 0) rotate(360deg);
+            }
+        }
+
+        /* Kalp Animasyonu - Hareket etme */
+        @keyframes moveHearts {
+            0% {
+                left: -10%;
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                left: 110%;
+            }
         }
 
     </style>
