@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melekle Ali'nin Sitesi</title>
+    <style>
+        /* Genel Sayfa Stili */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4a460;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Menü (Geçiş) Stili */
+        nav {
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+            border-radius: 5px;
+        }
+
+        /* Sayfa içerikleri */
+        #photos, #daily {
+            padding: 60px 20px; /* Menü altı boşluk */
+        }
+
+        /* Fotoğraflar Bölümü */
+        #photos img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        #photos p {
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Notlar Bölümü */
+        #daily {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        #daily h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #noteInput {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #dailyNoteDisplay {
+            margin-top: 20px;
+        }
+
+        #dailyNoteDisplay .note-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            line-height: 1.5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menü (Geçiş) -->
+    <nav>
+        <a href="#photos">Resimler</a>
+        <a href="#daily">Günlük</a>
+    </nav>
+
+    <!-- Fotoğraflar Bölümü -->
+    <div id="photos">
+        <center>
+            <h1>Resimlerimiz</h1>
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\adalar.jpeg" width="400" height="300" />
+            <p>Adalarda gezdiğimiz gündü. En çok eğlendiğim günlerden biriydi.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\ankaraavm.jpeg" width="400" height="300" />
+            <p>Kütüphane çıkışı uykulu uykulu avmye gidip sinema izlemiştik.</p>  
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\gülüş.jpeg" width="400" height="300" />
+            <p>Seni trene bırakmadan önce çekildiğimiz foto.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\tatlış.jpeg" width="300" height="400" />
+            <p>Beylikdüzü'nde avmde buluşmamız.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\salonburger.jpeg" width="400" height="300" />
+            <p>Hayatımda yediğim en iyi burger menülerindeydi.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\karameldondurma.jpeg" width="400" height="300" />
+            <p>1. ayımızdı. Garson abiye aynı anda karamelli demiştik.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\okultercih.jpeg" width="400" height="300" />
+            <p>Üniversite tercihin için İstanbul Kongre Merkezine gittiğimiz gün.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\bilardo.jpeg" width="300" height="400" />
+            <p>Bilardocu kapısına dayandığımız gündü.</p>
+
+            <img src="C:\Users\Alibu\OneDrive\Masaüstü\Melek\çiçek.jpeg" width="400" height="300" />
+            <p>İkinci buluşmamızdı sanırım. Çiçek alıp gelmiştin.</p>
+        </center>
+    </div>
+
+    <!-- Günlük Bölümü -->
+    <div id="daily">
+        <h2>Günlük Notlarım</h2>
+        <form id="saveNoteForm">
+            <textarea id="noteInput" rows="4" placeholder="Bugün ne oldu?"></textarea>
+            <button type="submit">Notu Kaydet</button>
+        </form>
+
+        <div id="dailyNoteDisplay"></div>
+    </div>
+
+    <script>
+        // Sayfa yüklendiğinde önceki notları kontrol et ve göster
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedNotes = JSON.parse(localStorage.getItem('dailyNotes')) || [];
+            const noteDisplay = document.getElementById('dailyNoteDisplay');
+            savedNotes.forEach((note, index) => {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('note-item');
+                
+                const noteText = document.createElement('p');
+                noteText.textContent = note;
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Sil';
+                deleteButton.classList.add('delete-btn');
+                
+                deleteButton.addEventListener('click', () => {
+                    deleteNote(index);
+                });
+
+                noteElement.appendChild(noteText);
+                noteElement.appendChild(deleteButton);
+                noteDisplay.appendChild(noteElement);
+            });
+        });
+
+        document.getElementById('saveNoteForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const noteInput = document.getElementById('noteInput').value;
+            if (noteInput.trim() !== '') {
+                const savedNotes = JSON.parse(localStorage.getItem('dailyNotes')) || [];
+                savedNotes.push(noteInput);
+                localStorage.setItem('dailyNotes', JSON.stringify(savedNotes));
+
+                const noteDisplay = document.getElementById('dailyNoteDisplay');
+                const newNoteElement = document.createElement('div');
+                newNoteElement.classList.add('note-item');
+
+                const noteText = document.createElement('p');
+                noteText.textContent = noteInput;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Sil';
+                deleteButton.classList.add('delete-btn');
+                
+                deleteButton.addEventListener('click', () => {
+                    deleteNote(savedNotes.length);
+                });
+
+                newNoteElement.appendChild(noteText);
+                newNoteElement.appendChild(deleteButton);
+                noteDisplay.appendChild(newNoteElement);
+
+                document.getElementById('noteInput').value = '';
+            }
+        });
+
+        function deleteNote(index) {
+            const savedNotes = JSON.parse(localStorage.getItem('dailyNotes')) || [];
+            savedNotes.splice(index, 1);
+            localStorage.setItem('dailyNotes', JSON.stringify(savedNotes));
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
